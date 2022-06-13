@@ -1,0 +1,17 @@
+version: '3.5'
+
+services:
+  postgres:
+    image: 'postgres:latest'
+    networks:
+      - database-network
+    environment:
+      - PG_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - PG_HOST=${PG_HOST}
+      - PG_USER=${PG_USER}
+      - PG_PORT=${PG_PORT}
+networks:
+  database-network:
+    driver: bridge
+    name: postgres_network
